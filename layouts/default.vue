@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import CookieNotify from "../components/CookieNotify";
+    import CookieNotify from "../components/CookieNotice";
 
     export default {
         data: () => ({}),

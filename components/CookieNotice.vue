@@ -1,6 +1,6 @@
 <template>
   <v-alert
-    v-model="show"
+    v-model="cookies"
     color="blue-grey darken-4"
     close-text="Fermer"
     dark
@@ -16,8 +16,18 @@
 <script>
     export default {
         name: "cookies-notify",
-        data: () => ({
-            show: true
-        })
+        computed: {
+            cookies: {
+                get() {
+                    return this.$cookies.get('cookies') === undefined
+                },
+                set() {
+                    this.$cookies.set('cookies', true, {
+                        path: '/',
+                        maxAge: 60 * 60 * 24 * 365
+                    })
+                }
+            }
+        }
     }
 </script>
