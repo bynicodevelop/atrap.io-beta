@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <v-container>
-        <nuxt/>
+        <nuxt />
       </v-container>
     </v-content>
 
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-    import CookieNotify from "../components/CookieNotice";
+import CookieNotify from "../components/CookieNotice"
 
-    export default {
-        data: () => ({}),
-        components: {
-            'cookies-notify': CookieNotify
-        }
-    }
+export default {
+  components: {
+    "cookies-notify": CookieNotify,
+  },
+  data: () => ({}),
+}
 </script>
