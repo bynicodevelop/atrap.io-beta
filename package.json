@@ -9,13 +9,11 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test": "nyc --reporter=lcov --reporter=text-summary ava"
+    "test": "jest"
   },
-  "ava": {
-    "babel": true,
-    "files": [
-      "tests/**/*"
-    ]
+  "jest": {
+    "verbose": true,
+    "preset": "jest-puppeteer"
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.0",
@@ -25,8 +23,8 @@
   "devDependencies": {
     "@ava/babel": "^1.0.1",
     "@nuxtjs/vuetify": "^1.0.0",
-    "ava": "^3.7.0",
-    "jsdom": "^16.2.2",
-    "nyc": "^15.0.1"
+    "jest": "^25.3.0",
+    "jest-puppeteer": "^4.4.0",
+    "puppeteer": "^3.0.0"
   }
 }
