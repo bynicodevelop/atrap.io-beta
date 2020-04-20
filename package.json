@@ -22,7 +22,6 @@
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
-    "@ava/babel": "^1.0.1",
     "@nuxtjs/vuetify": "^1.0.0",
     "jest": "^25.3.0",
     "jest-puppeteer": "^4.4.0",

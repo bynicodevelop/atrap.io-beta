@@ -1,10 +1,10 @@
 describe('Cookies Notice', () => {
-  beforeAll(async () => { });
-
   it("cookies notice should be visible", async () => {
     await page.goto('http://localhost:3000/auth/signin');
 
-    await page.waitForSelector('.v-alert')
+    await page.waitForSelector('.v-alert', {
+      visible: true
+    })
   });
 
   it("cookies notice should not be visible when user clicked on close button", async () => {
