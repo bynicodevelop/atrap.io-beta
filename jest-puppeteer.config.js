@@ -5,8 +5,8 @@ module.exports = {
     launchTimeout: 30000
   },
   launch: {
-    headless: process.env.CI === "true",
+    // headless: process.env.CI === false,
     ignoreDefaultArgs: ["--disable-extensions"],
-    args: ["--no-sandbox"]
+    args: ["--no-sandbox", "--disable-setuid-sandbox"]
   }
 }
