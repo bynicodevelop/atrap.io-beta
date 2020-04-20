@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
-          with:
-            node-version: 12
+        with:
+          node-version: 12
       - run: npm ci
       - run: npm lint
   test:
