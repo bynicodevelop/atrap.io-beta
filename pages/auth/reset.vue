@@ -1,13 +1,11 @@
 <template>
-    <h1>reset</h1>
+  <h1>reset</h1>
 </template>
 
 <script>
-    export default {
-        name: "reset"
-    }
+export default {
+  name: "Reset",
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

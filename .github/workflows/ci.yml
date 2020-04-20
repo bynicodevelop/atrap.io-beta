@@ -10,7 +10,15 @@ on:
       - develop
 
 jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: hallee/eslint-action@master
+        with:
+          repo-token: ${{secrets.SECRET_GITHUB_TOKEN}}
   test:
+    needs: eslint
     name: Run tests
     runs-on: ubuntu-latest
     steps:
