@@ -8,5 +8,7 @@ module.exports = {
     headless: process.env.CI === true,
     ignoreDefaultArgs: ["--disable-extensions"],
     args: ["--no-sandbox", "--disable-setuid-sandbox"]
-  }
+  },
+  browser: 'chromium',
+  browserContext: 'default'
 }
