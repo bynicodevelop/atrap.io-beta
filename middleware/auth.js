@@ -6,7 +6,14 @@ export default ({ store, redirect, route }) => {
     "auth-password",
   ]
 
-  if (!store.state.user.isAuthenticated && !guestRoutes.includes(route.name)) {
+  console.log(
+    guestRoutes.map((d) => (route.name || []).includes(d)).includes(true)
+  )
+
+  if (
+    !store.state.user.isAuthenticated &&
+    !guestRoutes.map((d) => (route.name || []).includes(d)).includes(true)
+  ) {
     redirect("/auth/signin")
   }
 }
