@@ -57,7 +57,7 @@
         </v-stepper-content>
 
         <v-stepper-content step="3">
-          <h1>Sign up</h1>
+          <h1>{{ $t("signup") }}</h1>
           <p class="headline">
             Explication
           </p>
