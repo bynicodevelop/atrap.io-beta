@@ -1,8 +1,10 @@
 <template>
   <v-app>
     <v-content>
-      <v-container>
-        <nuxt />
+      <v-container grid-list-md>
+        <v-layout row>
+          <nuxt />
+        </v-layout>
       </v-container>
     </v-content>
 
