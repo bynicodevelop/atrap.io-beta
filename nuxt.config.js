@@ -47,6 +47,21 @@ export default {
     "@nuxtjs/dotenv",
     // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
     "cookie-universal-nuxt",
+    [
+      "nuxt-i18n",
+      {
+        defaultLocale: "fr",
+        locales: [
+          {
+            code: "fr",
+            file: "fr-FR.js",
+            isCatchallLocale: true,
+          },
+        ],
+        lazy: true,
+        langDir: "lang/",
+      },
+    ],
   ],
   /*
    ** vuetify module configuration
