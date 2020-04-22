@@ -55,7 +55,6 @@ export default {
           {
             code: "fr",
             file: "fr-FR.js",
-            isCatchallLocale: true,
           },
         ],
         lazy: true,
