@@ -28,7 +28,7 @@
               <v-icon v-show="over && !avatar">
                 mdi-file-image
               </v-icon>
-              <img v-show="avatar" :src="avatar" /> >
+              <img v-show="avatar" :src="avatar" />
             </v-avatar>
 
             <input
@@ -89,6 +89,7 @@
     </v-stepper>
 
     <v-card-text class="footer">
+      <notify :snackbar="snackbar" :text="message" />
       <v-btn
         id="next"
         :disabled="!validSteps[`step${step}`]"
@@ -105,9 +106,19 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
+import { EmailAlreadyUser } from "../../exceptions/EmailAlreadyUser"
+import Notify from "../../components/Notify"
+
 export default {
   name: "Signup",
+  components: {
+    notify: Notify,
+  },
   data: () => ({
+    snackbar: false,
+    message: "",
+
     step: 1,
     scrolled: false,
     over: false,
@@ -146,6 +157,27 @@ export default {
       },
       deep: true,
     },
+    async step() {
+      if (this.step > 3) {
+        this.step = 3
+        try {
+          await this.register({
+            email: this.email,
+            password: this.password,
+            avatar: this.avatar,
+            name: this.name,
+          })
+
+          await this.$router.replace({ path: "/" })
+        } catch (e) {
+          if (e instanceof EmailAlreadyUser) {
+            this.snackbar = true
+            this.message =
+              "Il n'est pas possible de vous enregistrer avec ces identifiants."
+          }
+        }
+      }
+    },
   },
   mounted() {
     this.validSteps[`step1`] = !this.validSteps[`step1`]
@@ -153,6 +185,9 @@ export default {
     this.validSteps[`step3`] = !this.validSteps[`step3`]
   },
   methods: {
+    ...mapActions({
+      register: "user/register",
+    }),
     uploadFile(data) {
       const localImage = new FileReader()
 
@@ -178,6 +213,7 @@ export default {
 <style lang="sass" scoped>
 .v-stepper
   margin-bottom: 80px
+
 .footer
   background-color: #FFF
   height: 70px

@@ -87,7 +87,10 @@ const secondStepNominalCase = async () => {
   })
 }
 
-const lastStepNominalCase = async () => {
+const lastStepNominalCase = async (
+  email = "john.doe@domain.tld",
+  password = "123456"
+) => {
   /**
    * Pass to next step
    */
@@ -106,10 +109,22 @@ const lastStepNominalCase = async () => {
    */
   await global.page.waitForSelector(".footer button[disabled]")
 
-  await global.page.type("#email", "john.doe@domain.tld")
-  await global.page.type("#password", "123456")
+  await global.page.type("#email", email)
+  await global.page.type("#password", password)
 
   await global.page.waitForSelector(".footer button:not([disabled])")
+}
+
+const registrationCompleteNominalCase = async () => {
+  /**
+   * Pass to next step
+   */
+  await global.page.click(".footer button")
+  await global.page.waitForNavigation()
+
+  const res = await global.page.url()
+
+  expect(res).toBe("http://localhost:3000/")
 }
 
 describe("Register user", () => {
@@ -148,5 +163,38 @@ describe("Register user", () => {
     await secondStepNominalCase()
 
     await lastStepNominalCase()
+  })
+
+  it("User should be have complete registration", async () => {
+    await firstStepNominalCase()
+
+    await secondStepNominalCase()
+
+    await lastStepNominalCase()
+
+    await registrationCompleteNominalCase()
+  })
+
+  it("User should be have complete registration with already email exist", async () => {
+    await firstStepNominalCase()
+
+    await secondStepNominalCase()
+
+    await lastStepNominalCase("user@email.ext", "123456")
+
+    await registrationCompleteNominalCase()
+
+    await firstStepNominalCase()
+
+    await secondStepNominalCase()
+
+    await lastStepNominalCase("user@email.ext", "123456")
+
+    /**
+     * Pass to next step
+     */
+    await global.page.click(".footer button")
+
+    await global.page.waitForSelector(".v-snack")
   })
 })
