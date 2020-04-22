@@ -3,15 +3,15 @@
     <v-stepper v-model="step">
       <v-stepper-items>
         <v-stepper-content step="1">
-          <h1>Sign up</h1>
+          <h1>{{ $t("signup.h1") }}</h1>
 
           <p class="headline">
-            Explication
+            {{ $t("signup.explain") }}
           </p>
 
           <v-form
             ref="form"
-            v-model="validStep1"
+            v-model="validSteps[`step${step}`]"
             autocomplete="off"
             lazy-validation
           >
@@ -49,11 +49,12 @@
           </v-form>
         </v-stepper-content>
 
-        <v-stepper-content step="2">
+        <v-stepper-content v-scroll="scrollEvent" step="2">
           <h1>Sign up</h1>
           <p class="headline">
             Explication
           </p>
+          <article v-html="$t('cgv')" />
         </v-stepper-content>
 
         <v-stepper-content step="3">
@@ -68,7 +69,7 @@
     <v-card-text class="footer">
       <v-btn
         id="next"
-        :disabled="!validStep1"
+        :disabled="!validSteps[`step${step}`]"
         absolute
         fab
         top
@@ -86,10 +87,13 @@ export default {
   name: "Signup",
   data: () => ({
     step: 1,
-
+    scrolled: false,
     over: false,
 
-    validStep1: true,
+    validSteps: {
+      step1: true,
+      step2: true,
+    },
     name: "",
     nameRules: [
       (v) => !!v || "Merci de saisir le nom de votre entité (marque)",
@@ -97,12 +101,18 @@ export default {
     avatar: "",
   }),
   watch: {
-    validStep1() {
-      this.validStep1 = this.avatar !== "" && this.name !== ""
+    validSteps: {
+      handler() {
+        if (this.step === 1) {
+          this.validSteps["step1"] = this.avatar !== "" && this.name !== ""
+        }
+      },
+      deep: true,
     },
   },
   mounted() {
-    this.validStep1 = !this.validStep1
+    this.validSteps[`step1`] = !this.validSteps[`step1`]
+    this.validSteps[`step2`] = !this.validSteps[`step2`]
   },
   methods: {
     uploadFile(data) {
@@ -110,11 +120,17 @@ export default {
 
       localImage.addEventListener("load", (e) => {
         this.avatar = e.target.result
-        this.validStep1 = this.avatar !== "" && this.name !== ""
+        this.validSteps[`step${this.step}`] =
+          this.avatar !== "" && this.name !== ""
       })
 
       if (data.target.files.length) {
         localImage.readAsDataURL(data.target.files[0])
+      }
+    },
+    scrollEvent() {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        this.validSteps[`step${this.step}`] = true
       }
     },
   },
@@ -122,6 +138,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.v-stepper
+  margin-bottom: 80px
 .footer
   background-color: #FFF
   height: 70px
