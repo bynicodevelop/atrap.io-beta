@@ -28,7 +28,7 @@
               <v-icon v-show="over && !avatar">
                 mdi-file-image
               </v-icon>
-              <img v-show="avatar" :src="avatar" />
+              <img v-show="avatar" :src="avatar" /> >
             </v-avatar>
 
             <input
@@ -62,6 +62,28 @@
           <p class="headline">
             Explication
           </p>
+          <v-form
+            ref="form"
+            v-model="validSteps[`step${step}`]"
+            autocomplete="off"
+            lazy-validation
+          >
+            <v-text-field
+              id="email"
+              v-model="email"
+              :rules="emailRules"
+              label="Email"
+              required
+            />
+
+            <v-text-field
+              id="password"
+              v-model="password"
+              :rules="passwordRules"
+              label="Mot de passe"
+              required
+            />
+          </v-form>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -93,11 +115,22 @@ export default {
     validSteps: {
       step1: true,
       step2: true,
+      step3: true,
     },
+
     name: "",
     nameRules: [
       (v) => !!v || "Merci de saisir le nom de votre entité (marque)",
     ],
+
+    email: "",
+    emailRules: [
+      (v) => !!v || "Merci de saisir votre email principal",
+      (v) => /.+@.+\..+/.test(v) || "L'e-mail doit être valide",
+    ],
+
+    password: "",
+    passwordRules: [(v) => !!v || "Merci de saisir un mot de passe"],
     avatar: "",
   }),
   watch: {
@@ -106,6 +139,10 @@ export default {
         if (this.step === 1) {
           this.validSteps["step1"] = this.avatar !== "" && this.name !== ""
         }
+
+        if (this.step === 3) {
+          this.validSteps["step3"] = this.email !== "" && this.password !== ""
+        }
       },
       deep: true,
     },
@@ -113,6 +150,7 @@ export default {
   mounted() {
     this.validSteps[`step1`] = !this.validSteps[`step1`]
     this.validSteps[`step2`] = !this.validSteps[`step2`]
+    this.validSteps[`step3`] = !this.validSteps[`step3`]
   },
   methods: {
     uploadFile(data) {
