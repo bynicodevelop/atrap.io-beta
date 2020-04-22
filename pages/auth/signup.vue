@@ -36,6 +36,7 @@
               id="inputUpload"
               ref="inputUpload"
               type="file"
+              accept="image/*"
               @change="uploadFile"
             />
 
