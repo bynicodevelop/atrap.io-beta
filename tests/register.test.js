@@ -1,12 +1,4 @@
 const firstStepNominalCase = async () => {
-  /**
-   * Able to hide cookie banner
-   */
-  await global.page.setCookie({
-    name: "cookies",
-    value: "true",
-    url: "http://localhost:3000",
-  })
   await global.page.goto("http://localhost:3000/auth/signup")
 
   /**
