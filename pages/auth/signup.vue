@@ -28,7 +28,7 @@
               <v-icon v-show="over && !avatar">
                 mdi-file-image
               </v-icon>
-              <img v-show="avatar" :src="avatar" />
+              <img alt="avatar" v-show="avatar" :src="avatar" />
             </v-avatar>
 
             <input
