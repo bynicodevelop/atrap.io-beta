@@ -24,4 +24,8 @@ export const actions = {
       }
     }
   },
+
+  async signin({ commit }, value) {
+    console.log(value)
+  },
 }
