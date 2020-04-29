@@ -23,7 +23,7 @@
         required
       />
 
-      <v-btn :disabled="!valid" @click="signin({ email, password })">
+      <v-btn :disabled="!valid" @click="doSignin">
         {{ $t("signin.button") }}
       </v-btn>
     </v-form>
@@ -55,6 +55,18 @@ export default {
     ...mapActions({
       signin: "user/signin",
     }),
+    async doSignin() {
+      try {
+        await this.signin({
+          email: this.email,
+          password: this.password,
+        })
+
+        await this.$router.replace({ path: "/" })
+      } catch (e) {
+        console.log(e)
+      }
+    },
   },
   watch: {
     valid() {

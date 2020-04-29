@@ -110,8 +110,8 @@
 
 <script>
 import { mapActions } from "vuex"
-import { EmailAlreadyUser } from "../../exceptions/EmailAlreadyUser"
 import Notify from "../../components/Notify"
+import { EmailAlreadyUserException } from "../../exceptions/EmailAlreadyUserException"
 
 export default {
   name: "Signup",
@@ -173,7 +173,7 @@ export default {
 
           await this.$router.replace({ path: "/" })
         } catch (e) {
-          if (e instanceof EmailAlreadyUser) {
+          if (e instanceof EmailAlreadyUserException) {
             this.snackbar = true
             this.message =
               "Il n'est pas possible de vous enregistrer avec ces identifiants."
