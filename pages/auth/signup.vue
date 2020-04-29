@@ -44,7 +44,7 @@
               id="name"
               v-model="name"
               :rules="nameRules"
-              label="Name"
+              :label="$t('signup.step1.form.name.label')"
               required
             />
           </v-form>
@@ -75,7 +75,7 @@
               id="email"
               v-model="email"
               :rules="emailRules"
-              label="Email"
+              :label="$t('signup.step3.form.email.label')"
               required
             />
 
@@ -83,7 +83,7 @@
               id="password"
               v-model="password"
               :rules="passwordRules"
-              label="Mot de passe"
+              :label="$t('signup.step3.form.password.label')"
               required
             />
           </v-form>
@@ -133,18 +133,13 @@ export default {
     },
 
     name: "",
-    nameRules: [
-      (v) => !!v || "Merci de saisir le nom de votre entité (marque)",
-    ],
+    nameRules: [],
 
     email: "",
-    emailRules: [
-      (v) => !!v || "Merci de saisir votre email principal",
-      (v) => /.+@.+\..+/.test(v) || "L'e-mail doit être valide",
-    ],
+    emailRules: [],
 
     password: "",
-    passwordRules: [(v) => !!v || "Merci de saisir un mot de passe"],
+    passwordRules: [],
     avatar: "",
   }),
   watch: {
@@ -175,8 +170,7 @@ export default {
         } catch (e) {
           if (e instanceof EmailAlreadyUserException) {
             this.snackbar = true
-            this.message =
-              "Il n'est pas possible de vous enregistrer avec ces identifiants."
+            this.message = this.$t("signup.error.registrationFailed")
           }
         }
       }
@@ -188,6 +182,21 @@ export default {
       i++
       this.validSteps[`step${i}`] = !this.validSteps[`step${i}`]
     }
+
+    this.emailRules = [
+      (v) => !!v || this.$t("signup.step3.form.email.validation.require"),
+      (v) =>
+        /.+@.+\..+/.test(v) ||
+        this.$t("signup.step3.form.email.validation.valid"),
+    ]
+
+    this.nameRules = [
+      (v) => !!v || this.$t("signup.step1.form.name.validation.require"),
+    ]
+
+    this.passwordRules = [
+      (v) => !!v || this.$t("signup.step3.form.password.validation.require"),
+    ]
   },
   methods: {
     ...mapActions({
