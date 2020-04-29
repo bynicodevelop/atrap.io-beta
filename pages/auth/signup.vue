@@ -181,9 +181,11 @@ export default {
     },
   },
   mounted() {
-    this.validSteps[`step1`] = !this.validSteps[`step1`]
-    this.validSteps[`step2`] = !this.validSteps[`step2`]
-    this.validSteps[`step3`] = !this.validSteps[`step3`]
+    let i = 0
+    while (i < 3) {
+      i++
+      this.validSteps[`step${i}`] = !this.validSteps[`step${i}`]
+    }
   },
   methods: {
     ...mapActions({

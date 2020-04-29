@@ -10,9 +10,14 @@ export const actions = {
    */
   async register({ commit }, value) {
     try {
-      await firebase
+      const user = await firebase
         .auth()
         .createUserWithEmailAndPassword(value.email, value.password)
+
+      await firebase.database().ref(`users/${user.user.uid}`).set({
+        username: value.name,
+        profile_picture: value.avatar,
+      })
     } catch (e) {
       if (e.code === "auth/email-already-in-use") {
         throw new EmailAlreadyUser()
