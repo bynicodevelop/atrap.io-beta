@@ -1,5 +1,6 @@
 import firebase from "firebase"
-import { EmailAlreadyUser } from "../exceptions/EmailAlreadyUser"
+import { EmailAlreadyUserException } from "../exceptions/EmailAlreadyUserException"
+import { SigninException } from "../exceptions/SigninException"
 
 export const actions = {
   /**
@@ -20,7 +21,19 @@ export const actions = {
       })
     } catch (e) {
       if (e.code === "auth/email-already-in-use") {
-        throw new EmailAlreadyUser()
+        throw new EmailAlreadyUserException()
+      }
+    }
+  },
+
+  async signin({ commit }, value) {
+    try {
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(value.email, value.password)
+    } catch (e) {
+      if (e.code === "auth/user-not-found") {
+        throw new SigninException()
       }
     }
   },

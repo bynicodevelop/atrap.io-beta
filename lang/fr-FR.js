@@ -21,5 +21,17 @@ export default {
         "Félicication, c'est la denière étape. Il ne reste plus qu'à compéter les informations pour se connecter a @trap.io",
     },
   },
-  signin: "Se connecter",
+  signin: {
+    h1: "Se connecter",
+    explain: "Saisi toutes les informations pour te connecter",
+    button: "Se connecter",
+    form: {
+      email: {
+        label: "Email",
+      },
+      password: {
+        label: "Mot de passe",
+      },
+    },
+  },
 }
