@@ -3,10 +3,10 @@
     <v-stepper v-model="step">
       <v-stepper-items>
         <v-stepper-content step="1">
-          <h1>{{ $t("signup.h1") }}</h1>
+          <h1>{{ $t("signup.step1.h1") }}</h1>
 
-          <p class="headline">
-            {{ $t("signup.explain") }}
+          <p class="subtitle-1">
+            {{ $t("signup.step1.explain") }}
           </p>
 
           <v-form
@@ -28,7 +28,7 @@
               <v-icon v-show="over && !avatar">
                 mdi-file-image
               </v-icon>
-              <img alt="avatar" v-show="avatar" :src="avatar" />
+              <img v-show="avatar" alt="avatar" :src="avatar" />
             </v-avatar>
 
             <input
@@ -51,17 +51,19 @@
         </v-stepper-content>
 
         <v-stepper-content v-scroll="scrollEvent" step="2">
-          <h1>Sign up</h1>
-          <p class="headline">
-            Explication
+          <h1>{{ $t("signup.step2.h1") }}</h1>
+
+          <p class="subtitle-1">
+            {{ $t("signup.step2.explain") }}
           </p>
           <article v-html="$t('cgv')" />
         </v-stepper-content>
 
         <v-stepper-content step="3">
-          <h1>{{ $t("signup") }}</h1>
-          <p class="headline">
-            Explication
+          <h1>{{ $t("signup.step3.h1") }}</h1>
+
+          <p class="subtitle-1">
+            {{ $t("signup.step3.explain") }}
           </p>
           <v-form
             ref="form"
