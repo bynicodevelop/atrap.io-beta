@@ -30,7 +30,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: "~/plugins/firebase.js", mode: "client" },
+    { src: "~/plugins/auth.js", mode: "client" },
+  ],
   router: {
     middleware: ["auth"],
   },

@@ -7,7 +7,7 @@ export default ({ store, redirect, route }) => {
   ]
 
   if (
-    !store.state.user.isAuthenticated &&
+    !store.state.auth.isAuthenticated &&
     !guestRoutes.map((d) => (route.name || []).includes(d)).includes(true)
   ) {
     redirect("/auth/signin")

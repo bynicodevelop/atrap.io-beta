@@ -26,7 +26,7 @@ module.exports = {
     'no-console': 'off',
     'vue/max-attributes-per-line': 'off',
     'prettier/prettier': ['error', { 'semi': false }],
-    'no-unused-vars': ["error", { "argsIgnorePattern": "config|ctx" }],
+    'no-unused-vars': ["error", { "argsIgnorePattern": "config|ctx|commit" }],
     'indent': ["error", 2]
   }
 }

@@ -8,10 +8,7 @@
     tile
     class="mb-0"
   >
-    <!-- prettier-ignore -->
-    <small>Nous utilisons des cookies pour nous permettre de mieux comprendre
-      comment le site est utilisé. En continuant à utiliser ce site, vous
-      acceptez cette politique.</small>
+    <small>{{ $t("cookies.content") }}</small>
   </v-alert>
 </template>
 
