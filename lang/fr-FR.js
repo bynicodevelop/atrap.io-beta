@@ -1,4 +1,14 @@
 export default {
+  layout: {
+    default: {
+      nav: {
+        button: {
+          signin: "Se connecter",
+          signup: "S'enregistrer",
+        },
+      },
+    },
+  },
   cookies: {
     content:
       "Nous utilisons des cookies pour nous permettre de mieux comprendre comment le site est utilisé. En continuant à utiliser ce site, vous acceptez cette politique.",
@@ -25,6 +35,7 @@ export default {
     h1: "Se connecter",
     explain: "Saisi toutes les informations pour te connecter",
     button: "Se connecter",
+    resetPassword: "J'ai oublié mon mot de passe.",
     form: {
       email: {
         label: "Email",

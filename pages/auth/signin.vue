@@ -27,6 +27,10 @@
         {{ $t("signin.button") }}
       </v-btn>
     </v-form>
+
+    <nuxt-link to="/auth/reset">
+      {{ $t("signin.resetPassword") }}
+    </nuxt-link>
   </v-flex>
 </template>
 
