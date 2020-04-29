@@ -164,7 +164,7 @@ export default {
       if (this.step > 3) {
         this.step = 3
         try {
-          await this.register({
+          await this.signup({
             email: this.email,
             password: this.password,
             avatar: this.avatar,
@@ -191,7 +191,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      register: "user/register",
+      signup: "user/signup",
     }),
     uploadFile(data) {
       const localImage = new FileReader()
