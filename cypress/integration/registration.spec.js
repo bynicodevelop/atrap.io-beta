@@ -1,9 +1,10 @@
 describe("Registration use case", function () {
-  it("Should expected nominal case", function () {
+  beforeEach(function () {
     cy.visit("http://localhost:3000/auth/signup")
-
     cy.setCookie("cookies", "true")
+  })
 
+  it("Should expected nominal case", function () {
     cy.get(".v-card__text > .v-btn").should("be.disabled")
 
     cy.get("#name").focus().blur()
@@ -50,5 +51,19 @@ describe("Registration use case", function () {
     })
   })
 
-  it("Could not register with already email exist", function () {})
+  it("Could not register with already email exist", function () {
+    cy.get("#name").type("name")
+    cy.get("input[type=file]").attachFile("images/profile.jpg")
+
+    cy.get(".v-card__text > .v-btn").click()
+    cy.scrollTo("bottom")
+    cy.get(".v-card__text > .v-btn").click()
+
+    cy.get("#email").clear().type("john.doe.test@domain.tld")
+    cy.get("#password").type("123456")
+
+    cy.get(".v-card__text > .v-btn").click()
+
+    cy.get(".v-snack__content").should("be.visible")
+  })
 })

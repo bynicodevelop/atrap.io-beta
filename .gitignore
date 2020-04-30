@@ -92,3 +92,6 @@ sw.*
 # Test coverage
 .nyc_output
 coverage
+
+serviceAccount.json
+cypress.env.json
