@@ -95,3 +95,5 @@ coverage
 
 serviceAccount.json
 cypress.env.json
+cypress/video
+cypress/screenshot
