@@ -10,13 +10,14 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "cy:open": "cypress open",
-    "test:dev": "start-server-and-test dev http://localhost:3000 cy:open",
+    "cy:run": "cypress run",
+    "test:dev": "start-server-and-test start http://localhost:3000 cy:open",
+    "test:ci": "start-server-and-test start http://localhost:3000 cy:run",
     "lint": "eslint --ext .js,.vue .",
     "lintfix": "eslint --fix --ext .js,.vue ."
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
     }
   },
   "dependencies": {

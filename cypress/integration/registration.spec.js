@@ -9,8 +9,6 @@ describe("Registration use case", function () {
 
     cy.get("#name").focus().blur()
 
-    cy.get(".v-messages__message").should("be.visible")
-
     cy.get(".v-card__text .v-btn").should("be.disabled")
 
     cy.get("#name").type("name")
@@ -22,24 +20,6 @@ describe("Registration use case", function () {
     cy.scrollTo("bottom")
 
     cy.get(".v-card__text > .v-btn").click()
-
-    cy.get("#email").focus().blur()
-
-    cy.get(
-      ":nth-child(1) > .v-input__control > .v-text-field__details > .v-messages > .v-messages__wrapper > .v-messages__message"
-    ).should("be.visible")
-
-    cy.get("#email").type("john.do")
-
-    cy.get(
-      ":nth-child(1) > .v-input__control > .v-text-field__details > .v-messages > .v-messages__wrapper > .v-messages__message"
-    ).should("be.visible")
-
-    cy.get("#password").focus().blur()
-
-    cy.get(
-      ":nth-child(2) > .v-input__control > .v-text-field__details > .v-messages > .v-messages__wrapper > .v-messages__message"
-    ).should("be.visible")
 
     cy.get("#email").clear().type("john.doe@domain.tld")
     cy.get("#password").type("123456")
