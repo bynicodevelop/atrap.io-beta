@@ -52,6 +52,11 @@ export default {
     passwordRules: [(v) => !!v || "Merci de saisir un mot de passe"],
     avatar: "",
   }),
+  watch: {
+    valid() {
+      this.valid = this.email !== "" && this.password !== ""
+    },
+  },
   mounted() {
     this.valid = !this.valid
   },
@@ -70,11 +75,6 @@ export default {
       } catch (e) {
         console.log(e)
       }
-    },
-  },
-  watch: {
-    valid() {
-      this.valid = this.email !== "" && this.password !== ""
     },
   },
 }
