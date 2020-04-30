@@ -26,20 +26,20 @@ import "cypress-file-upload"
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-import firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/database"
-import "firebase/firestore"
-import { attachCustomCommands } from "cypress-firebase"
-
-const fbConfig = {
-  apiKey: Cypress.env("apiKey"),
-  authDomain: `${Cypress.env("appId")}.firebaseapp.com`,
-  databaseURL: `https://${Cypress.env("appId")}.firebaseio.com`,
-  projectId: Cypress.env("appId"),
-  storageBucket: `${Cypress.env("appId")}.appspot.com`,
-}
-
-firebase.initializeApp(fbConfig)
-
-attachCustomCommands({ Cypress, cy, firebase })
+// import firebase from "firebase/app"
+// import "firebase/auth"
+// import "firebase/database"
+// import "firebase/firestore"
+// import { attachCustomCommands } from "cypress-firebase"
+//
+// const fbConfig = {
+//   apiKey: Cypress.env("apiKey"),
+//   authDomain: `${Cypress.env("appId")}.firebaseapp.com`,
+//   databaseURL: `https://${Cypress.env("appId")}.firebaseio.com`,
+//   projectId: Cypress.env("appId"),
+//   storageBucket: `${Cypress.env("appId")}.appspot.com`,
+// }
+//
+// firebase.initializeApp(fbConfig)
+//
+// attachCustomCommands({ Cypress, cy, firebase })

@@ -1,5 +1,5 @@
-const admin = require("firebase-admin");
-const cypressFirebasePlugin = require("cypress-firebase").plugin;
+// const admin = require("firebase-admin");
+// const cypressFirebasePlugin = require("cypress-firebase").plugin;
 /// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -20,5 +20,5 @@ const cypressFirebasePlugin = require("cypress-firebase").plugin;
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-  return cypressFirebasePlugin(on, config, admin);
+  // return cypressFirebasePlugin(on, config, admin);
 }
