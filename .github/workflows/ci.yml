@@ -29,5 +29,12 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
-      - run: npm run generate
-      - run: npm t
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          build: npm run generate
+          start: npm start
+          wait-on: http://localhost:3000
+#      - run: npm ci
+#      - run: npm run generate
+#      - run: npm t
