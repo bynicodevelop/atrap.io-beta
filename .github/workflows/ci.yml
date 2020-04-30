@@ -28,10 +28,6 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: 12
-      - uses: cypress-io/github-action@v1
-        with:
-          browser: chrome
-          headless: true
       - run: npm ci
       - run: npm build
       - run: npm t
