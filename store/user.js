@@ -1,6 +1,7 @@
 import firebase from "firebase"
 import { EmailAlreadyUserException } from "../exceptions/EmailAlreadyUserException"
 import { SigninException } from "../exceptions/SigninException"
+import { UnexpectedError } from "../exceptions/UnexpectedError"
 
 export const actions = {
   /**
@@ -32,8 +33,11 @@ export const actions = {
         .auth()
         .signInWithEmailAndPassword(value.email, value.password)
     } catch (e) {
-      if (e.code === "auth/user-not-found") {
+      console.log(e)
+      if (["auth/user-not-found", "auth/wrong-password"].includes(e.code)) {
         throw new SigninException()
+      } else {
+        throw new UnexpectedError()
       }
     }
   },
