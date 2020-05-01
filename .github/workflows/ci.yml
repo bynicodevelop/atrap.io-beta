@@ -55,6 +55,5 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
-          API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
-          APP_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
-          UID_JOHN_DOE_TEST: ${{ secrets.DEV_UID_JOHN_DOE_TEST }}
+          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          CYPRESS_TEST_UID: ${{ secrets.DEV_UID_JOHN_DOE_TEST }}
