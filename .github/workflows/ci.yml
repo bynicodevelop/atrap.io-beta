@@ -33,8 +33,19 @@ jobs:
         with:
           node-version: 12
 
+      # https://github.com/marketplace/actions/create-env-json
+      - name: Set environment variables cypress.env.json
+        uses: schdck/create-env-json@v1
+        with:
+          file-name: 'cypress.env.json'
+          APP_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
+          API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
+          UID_JOHN_DOE_TEST: ${{ secrets.DEV_UID_JOHN_DOE_TEST }}
+
+      - run: cat cypress.env.json
+
       # https://github.com/SpicyPizza/create-envfile
-      - name: Set environment variables
+      - name: Set environment variables .env
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_APP_NAME: '@Trap.io'
@@ -55,3 +66,5 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
+          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          CYPRESS_TEST_UID: ${{ secrets.DEV_UID_JOHN_DOE_TEST }}

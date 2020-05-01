@@ -1,5 +1,6 @@
 describe("Registration use case", function () {
   beforeEach(function () {
+    cy.logout(Cypress.env("UID_JOHN_DOE_TEST"))
     cy.visit("http://localhost:3000/auth/signup")
     cy.setCookie("cookies", "true")
   })
@@ -29,6 +30,8 @@ describe("Registration use case", function () {
     cy.location({ timeout: 30000 }).should((loc) => {
       expect(loc.href).to.eq("http://localhost:3000/")
     })
+
+    cy.logout(Cypress.env("UID_JOHN_DOE_TEST"))
   })
 
   it("Could not register with already email exist", function () {
