@@ -10,7 +10,11 @@ const gotTo = (visit, selector, expected) => {
   })
 }
 
-describe("Guest Navigation", function () {
+describe("Navigation", function () {
+  beforeEach(function () {
+    cy.logout()
+  })
+
   it("Should automatically redirected to Signin", function () {
     gotTo("http://localhost:3000", null, "http://localhost:3000/auth/signin")
   })
@@ -37,5 +41,15 @@ describe("Guest Navigation", function () {
       ".flex > a",
       "http://localhost:3000/auth/reset"
     )
+  })
+
+  it("should not be redirect user to dashboard when to try to go to guest url", function () {
+    cy.login(Cypress.env("UID_JOHN_DOE_TEST"))
+
+    gotTo("http://localhost:3000/auth/signin", null, "http://localhost:3000/")
+
+    gotTo("http://localhost:3000/auth/signup", null, "http://localhost:3000/")
+
+    gotTo("http://localhost:3000/auth/reset", null, "http://localhost:3000/")
   })
 })
