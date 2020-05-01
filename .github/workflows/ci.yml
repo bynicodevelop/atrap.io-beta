@@ -38,13 +38,14 @@ jobs:
           ENV: 'development'
           FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
+      - run: cat .env
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
           build: npm run build
           start: npm start
           wait-on: 'http://localhost:3000'
-          record: true
+#          record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
