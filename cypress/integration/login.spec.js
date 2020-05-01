@@ -1,5 +1,6 @@
 describe("Login", function () {
   beforeEach(function () {
+    cy.logout()
     cy.visit("http://localhost:3000/auth/signin")
   })
 
