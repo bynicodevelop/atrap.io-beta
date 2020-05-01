@@ -10,19 +10,19 @@ on:
       - develop
 
 jobs:
-  eslint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          node-version: 12
-      - run: npm ci
-      - run: npm run lint
+#  eslint:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@master
+#      - uses: actions/setup-node@master
+#        with:
+#          node-version: 12
+#      - run: npm ci
+#      - run: npm run lint
   test:
-    needs: eslint
+#    needs: eslint
     name: Run tests
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
       - name: Setup Node
         uses: actions/setup-node@v1
@@ -31,13 +31,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Set environment variables
-        uses: allenevans/set-env@v1.0.0
+        uses: SpicyPizza/create-envfile@v1
         with:
           APP_NAME: '@Trap.io'
           BASE_URL: 'http://localhost:3000'
           ENV: 'development'
           FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
+          file_name: .env
 
       - name: Debug env
         run: ls -a && cat .env
