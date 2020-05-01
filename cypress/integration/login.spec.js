@@ -1,6 +1,5 @@
 describe("Login", function () {
   beforeEach(function () {
-    cy.logout(Cypress.env("UID_JOHN_DOE_TEST"))
     cy.visit("http://localhost:3000/auth/signin")
   })
 
@@ -13,6 +12,8 @@ describe("Login", function () {
     cy.location().should((loc) => {
       expect(loc.href).to.eq("http://localhost:3000/")
     })
+
+    cy.logout(Cypress.env("UID_JOHN_DOE_TEST"))
   })
 
   it("should return error when email is wrong", function () {
