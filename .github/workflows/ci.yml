@@ -41,7 +41,7 @@ jobs:
           file_name: .env
 
       - name: Debug env
-        run: echo "cat .env"
+        run: cat .env
 
 #      - name: Cypress run
 #        uses: cypress-io/github-action@v1
