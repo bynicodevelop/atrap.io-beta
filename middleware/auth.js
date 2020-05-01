@@ -12,4 +12,11 @@ export default ({ store, redirect, route }) => {
   ) {
     redirect("/auth/signin")
   }
+
+  if (
+    store.state.auth.isAuthenticated &&
+    guestRoutes.map((d) => (route.name || []).includes(d)).includes(true)
+  ) {
+    redirect("/")
+  }
 }
