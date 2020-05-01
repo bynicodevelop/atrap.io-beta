@@ -1,5 +1,6 @@
 describe("Registration use case", function () {
   beforeEach(function () {
+    cy.logout(Cypress.env("UID_JOHN_DOE_TEST"))
     cy.visit("http://localhost:3000/auth/signup")
     cy.setCookie("cookies", "true")
   })
