@@ -9,7 +9,7 @@ export const actions = {
    * @param value
    * @returns {Promise<void>}
    */
-  async register({ commit }, value) {
+  async signup({ commit }, value) {
     try {
       const user = await firebase
         .auth()
