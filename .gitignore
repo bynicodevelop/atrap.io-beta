@@ -89,11 +89,5 @@ sw.*
 # Vim swap files
 *.swp
 
-# Test coverage
-.nyc_output
-coverage
-
-serviceAccount.json
-cypress.env.json
-cypress/video
-cypress/screenshot
+/tests_output
+chromedriver.log
