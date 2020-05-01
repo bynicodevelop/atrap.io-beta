@@ -1,7 +1,7 @@
 const gotTo = (visit, selector, expected) => {
   cy.visit(visit)
 
-  if(selector !== null) {
+  if (selector !== null) {
     cy.get(selector).click()
   }
 
@@ -16,14 +16,26 @@ describe("Guest Navigation", function () {
   })
 
   it("Should navigate to go Sign up page", function () {
-    gotTo("http://localhost:3000/auth/signin", ".v-toolbar__content > .v-btn", "http://localhost:3000/auth/signup")
+    gotTo(
+      "http://localhost:3000/auth/signin",
+      ".v-toolbar__content > .v-btn",
+      "http://localhost:3000/auth/signup"
+    )
   })
 
   it("Should navigate to go Sign in page", function () {
-    gotTo("http://localhost:3000/auth/signup", ".v-toolbar__content > .v-btn", "http://localhost:3000/auth/signin")
+    gotTo(
+      "http://localhost:3000/auth/signup",
+      ".v-toolbar__content > .v-btn",
+      "http://localhost:3000/auth/signin"
+    )
   })
 
   it("Should navigate to go Reset password page", function () {
-    gotTo("http://localhost:3000/auth/signin", ".flex > a", "http://localhost:3000/auth/reset")
+    gotTo(
+      "http://localhost:3000/auth/signin",
+      ".flex > a",
+      "http://localhost:3000/auth/reset"
+    )
   })
 })
