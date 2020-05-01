@@ -1,6 +1,6 @@
 describe("Login", function () {
   beforeEach(function () {
-    cy.logout()
+    cy.logout(Cypress.env("UID_JOHN_DOE_TEST"))
     cy.visit("http://localhost:3000/auth/signin")
   })
 
