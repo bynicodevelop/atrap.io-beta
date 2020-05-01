@@ -33,11 +33,11 @@ jobs:
       - name: Set environment variables
         uses: SpicyPizza/create-envfile@v1
         with:
-          APP_NAME: '@Trap.io'
-          BASE_URL: 'http://localhost:3000'
-          ENV: 'development'
-          FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
-          FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
+          envkey_APP_NAME: '@Trap.io'
+          envkey_BASE_URL: 'http://localhost:3000'
+          envkey_ENV: 'development'
+          envkey_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
+          envkey_FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
           file_name: .env
 
       - name: Debug env
