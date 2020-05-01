@@ -56,7 +56,7 @@
           <p class="subtitle-1">
             {{ $t("signup.step2.explain") }}
           </p>
-          <article v-html="$t('cgv')" />
+          <article v-html="$t('cgv')"></article>
         </v-stepper-content>
 
         <v-stepper-content step="3">
