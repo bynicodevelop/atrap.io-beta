@@ -31,16 +31,26 @@
     <nuxt-link to="/auth/reset">
       {{ $t("signin.resetPassword") }}
     </nuxt-link>
+
+    <notify :snackbar="snackbar" :text="message" />
   </v-flex>
 </template>
 
 <script>
 import { mapActions } from "vuex"
+import { SigninException } from "../../exceptions/SigninException"
+import Notify from "../../components/Notify"
 
 export default {
   name: "Signin",
+  components: {
+    notify: Notify,
+  },
   data: () => ({
     valid: false,
+
+    snackbar: false,
+    message: "",
 
     email: "",
     emailRules: [
@@ -82,7 +92,13 @@ export default {
 
         await this.$router.replace({ path: "/" })
       } catch (e) {
-        console.log(e)
+        this.snackbar = true
+
+        if (e instanceof SigninException) {
+          this.message = this.$t("signin.error.loginFail")
+        } else {
+          this.message = this.$t("signin.error.unexpectedError")
+        }
       }
     },
   },

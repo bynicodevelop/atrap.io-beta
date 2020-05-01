@@ -59,6 +59,11 @@ export default {
     },
   },
   signin: {
+    error: {
+      loginFail: "Les identifiants de connexion ne sont pas correcte.",
+      unexpectedError:
+        "Une erreur est survenue. Il est possible que vous vous soyez connecté trop de fois en echec. Réessayez plus tard.",
+    },
     h1: "Se connecter",
     explain: "Saisi toutes les informations pour te connecter",
     button: "Se connecter",
