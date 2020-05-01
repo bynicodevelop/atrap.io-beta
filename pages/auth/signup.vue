@@ -196,6 +196,9 @@ export default {
 
     this.passwordRules = [
       (v) => !!v || this.$t("signup.step3.form.password.validation.require"),
+      (v) =>
+        v.length >= 6 ||
+        this.$t("signup.step3.form.password.validation.secured"),
     ]
   },
   methods: {

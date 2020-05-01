@@ -23,7 +23,11 @@ describe("Registration use case", function () {
     cy.get(".v-card__text > .v-btn").click()
 
     cy.get("#email").clear().type("john.doe@domain.tld")
-    cy.get("#password").type("123456")
+    cy.get("#password").type("123")
+
+    cy.get(".v-messages__message").should("be.visible")
+
+    cy.get("#password").clear().type("123456")
 
     cy.get("#next").click()
 
