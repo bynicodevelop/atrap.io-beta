@@ -57,3 +57,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
           SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
           CYPRESS_TEST_UID: ${{ secrets.DEV_UID_JOHN_DOE_TEST }}
+          APP_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
+          API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
