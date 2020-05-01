@@ -16,10 +16,22 @@ export default {
   cgv:
     "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><h3>Fin</h3>",
   signup: {
+    error: {
+      registrationFailed:
+        "Il n'est pas possible de vous enregistrer avec ces identifiants.",
+    },
     step1: {
       h1: "Créer son profil",
       explain:
         "Commence par créer un profil en choisissant une image et un nom.",
+      form: {
+        name: {
+          label: "Nom",
+          validation: {
+            require: "Merci de saisir le nom de votre entité (marque)",
+          },
+        },
+      },
     },
     step2: {
       h1: "Conditions générales",
@@ -29,6 +41,21 @@ export default {
       h1: "S'enregistrer",
       explain:
         "Félicication, c'est la denière étape. Il ne reste plus qu'à compéter les informations pour se connecter a @trap.io",
+      form: {
+        email: {
+          label: "Email",
+          validation: {
+            require: "Merci de saisir votre email principal",
+            valid: "L'e-mail doit être valide",
+          },
+        },
+        password: {
+          label: "Mot de passe",
+          validation: {
+            require: "Merci de saisir un mot de passe",
+          },
+        },
+      },
     },
   },
   signin: {
@@ -39,9 +66,16 @@ export default {
     form: {
       email: {
         label: "Email",
+        validation: {
+          require: "Merci de saisir votre email principal",
+          valid: "L'e-mail doit être valide",
+        },
       },
       password: {
         label: "Mot de passe",
+        validation: {
+          require: "Merci de saisir un mot de passe",
+        },
       },
     },
   },

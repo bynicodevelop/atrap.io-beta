@@ -59,6 +59,15 @@ export default {
   },
   mounted() {
     this.valid = !this.valid
+
+    this.emailRules = [
+      (v) => !!v || this.$t("signin.form.email.validation.require"),
+      (v) =>
+        /.+@.+\..+/.test(v) || this.$t("signin.form.email.validation.valid"),
+    ]
+    this.passwordRules = [
+      (v) => !!v || this.$t("signin.form.password.validation.require"),
+    ]
   },
   methods: {
     ...mapActions({
