@@ -22,14 +22,18 @@ jobs:
   test:
     needs: eslint
     name: Run tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - name: Checkout
         uses: actions/checkout@v1
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
-          browser: chrome
+          record: true
       env:
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
