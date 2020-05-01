@@ -28,7 +28,7 @@ export default {
         name: {
           label: "Nom",
           validation: {
-            require: "Merci de saisir le nom de votre entité (marque)",
+            require: "Merci de saisir le nom de votre entité (marque).q",
           },
         },
       },
@@ -45,14 +45,16 @@ export default {
         email: {
           label: "Email",
           validation: {
-            require: "Merci de saisir votre email principal",
-            valid: "L'e-mail doit être valide",
+            require: "Merci de saisir votre email principal.",
+            valid: "L'e-mail doit être valide.",
           },
         },
         password: {
           label: "Mot de passe",
           validation: {
-            require: "Merci de saisir un mot de passe",
+            require: "Merci de saisir un mot de passe.",
+            secured:
+              "Merci de saisir un mot de passe plus sécurisé avec 6 caractères minimum.",
           },
         },
       },
