@@ -40,7 +40,7 @@ jobs:
           FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
 
       - name: Debug env
-      - run: cat .env
+        run: cat .env
 
       - name: Cypress run
         uses: cypress-io/github-action@v1
