@@ -1,37 +1,65 @@
 <template>
   <v-app>
+    <v-app-bar app flat color="white">
+      <v-toolbar-title>{{ appName }}</v-toolbar-title>
+
+      <v-spacer />
+
+      <v-btn text :to="`/auth/${signTo}`">
+        {{ signBtn }}
+      </v-btn>
+    </v-app-bar>
+
     <v-content>
-      <v-container>
-        <nuxt />
+      <v-container grid-list-md>
+        <v-layout row>
+          <nuxt />
+        </v-layout>
       </v-container>
     </v-content>
+
+    <cookies-notify />
   </v-app>
 </template>
 
 <script>
+import CookieNotify from "../components/CookieNotice"
+
+const routesName = ["auth-signup", "auth-forgot", "auth-reset"]
+
 export default {
-  data () {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
-    }
-  }
+  components: {
+    "cookies-notify": CookieNotify,
+  },
+  data: () => ({
+    appName: process.env.APP_NAME,
+    signBtn: "",
+    signTo: routesName
+      .map((d) => window.$nuxt.$route.name.includes(d))
+      .includes(true)
+      ? "signin"
+      : "signup",
+  }),
+  watch: {
+    $route() {
+      this.signBtn = routesName
+        .map((d) => window.$nuxt.$route.name.includes(d))
+        .includes(true)
+        ? this.$t("layout.default.nav.button.signin")
+        : this.$t("layout.default.nav.button.signup")
+      this.signTo = routesName
+        .map((d) => window.$nuxt.$route.name.includes(d))
+        .includes(true)
+        ? "signin"
+        : "signup"
+    },
+  },
+  mounted() {
+    this.signBtn = routesName
+      .map((d) => window.$nuxt.$route.name.includes(d))
+      .includes(true)
+      ? this.$t("layout.default.nav.button.signin")
+      : this.$t("layout.default.nav.button.signup")
+  },
 }
 </script>

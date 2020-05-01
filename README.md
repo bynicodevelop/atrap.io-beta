@@ -1,8 +1,10 @@
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=bynicodevelop_atrap.io-beta&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=bynicodevelop_atrap.io-beta) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=bynicodevelop_atrap.io-beta&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=bynicodevelop_atrap.io-beta) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bynicodevelop_atrap.io-beta&metric=security_rating)](https://sonarcloud.io/dashboard?id=bynicodevelop_atrap.io-beta)
+
 # atrap.io
 
-> My wonderful Nuxt.js project
+> Remplir sa mailing liste en piratant la visibilité de sa concurrence
 
-## Build Setup
+## Installation
 
 ```bash
 # install dependencies
@@ -18,5 +20,3 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
