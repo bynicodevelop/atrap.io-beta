@@ -1,0 +1,36 @@
+{
+  "src_folders" : ["tests"],
+
+  "webdriver" : {
+    "start_process": true,
+    "server_path": "node_modules/.bin/chromedriver",
+    "port": 9515,
+    "cli_args": [
+      "--verbose"
+    ]
+  },
+
+  "selenium": {
+    "selenium": {
+      "start_process": true,
+      "port": 4444,
+      "server_path": "bin/selenium-server-standalone-4.0.0-alpha-2.jar",
+      "cli_args" : {
+        "webdriver.chrome.driver" : "./bin/chromedriver"
+      }
+
+    },
+    "webdriver": {
+      "start_process": false
+    }
+  },
+
+
+  "test_settings" : {
+    "default" : {
+      "desiredCapabilities": {
+        "browserName": "chrome"
+      }
+    }
+  }
+}

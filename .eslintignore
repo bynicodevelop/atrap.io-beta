@@ -1,4 +1,0 @@
-cypress/plugins
-.gitignore
-dist
-.nuxt
