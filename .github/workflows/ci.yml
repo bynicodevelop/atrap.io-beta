@@ -30,6 +30,14 @@ jobs:
           node-version: 12
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Set environment variables
+        uses: allenevans/set-env@v1.0.0
+        with:
+          APP_NAME: '@Trap.io'
+          BASE_URL: 'http://localhost:3000'
+          ENV: 'development'
+          FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
+          FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
