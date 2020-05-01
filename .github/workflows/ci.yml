@@ -41,7 +41,7 @@ jobs:
           file_name: .env
 
       - name: Debug env
-        run: ls -a && cat .env
+        run: cat .env
 
       - name: Cypress run
         uses: cypress-io/github-action@v1
@@ -49,7 +49,7 @@ jobs:
           build: npm run build
           start: npm start
           wait-on: 'http://localhost:3000'
-#          record: true
+          record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
