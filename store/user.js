@@ -59,6 +59,11 @@ export const actions = {
     }
   },
 
+  /**
+   * Permet de charger toutes les données utilisateur
+   * @param commit
+   * @returns {Promise<void>}
+   */
   async loadUserData({ commit }) {
     try {
       const user = await firebase.auth().currentUser
@@ -72,6 +77,18 @@ export const actions = {
         uid: user.uid,
         data: data.val(),
       })
+    } catch (e) {
+      console.log(e)
+    }
+  },
+
+  /**
+   * Permet la deconnexion d'un utilisateur
+   * @returns {Promise<void>}
+   */
+  async signout() {
+    try {
+      await firebase.auth().signOut()
     } catch (e) {
       console.log(e)
     }
