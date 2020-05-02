@@ -41,8 +41,8 @@ jobs:
           APP_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
           API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           UID_JOHN_DOE_TEST: ${{ secrets.DEV_UID_JOHN_DOE_TEST }}
-
-      - run: cat cypress.env.json
+          IMAGE_PROFILE: ${{ secrets.DEV_IMAGE_PROFILE }}
+          USERNAME: ${{ secrets.DEV_USERNAME }}
 
       # https://github.com/SpicyPizza/create-envfile
       - name: Set environment variables .env
@@ -53,8 +53,6 @@ jobs:
           envkey_ENV: 'development'
           envkey_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           envkey_FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
-          envkey_IMAGE_PROFILE: ${{ secrets.DEV_IMAGE_PROFILE }}
-          envkey_USERNAME: ${{ secrets.DEV_USERNAME }}
           file_name: .env
 
       # https://github.com/cypress-io/github-action
