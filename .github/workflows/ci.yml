@@ -53,8 +53,6 @@ jobs:
           envkey_ENV: 'development'
           envkey_FIREBASE_API_KEY: ${{ secrets.DEV_FIREBASE_API_KEY }}
           envkey_FIREBASE_PROJECT_ID: ${{ secrets.DEV_FIREBASE_PROJECT_ID }}
-          envkey_IMAGE_PROFILE: ${{ secrets.DEV_IMAGE_PROFILE }}
-          envkey_USERNAME: ${{ secrets.DEV_USERNAME }}
           file_name: .env
 
       # https://github.com/cypress-io/github-action
