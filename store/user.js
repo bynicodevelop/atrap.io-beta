@@ -27,6 +27,12 @@ export const actions = {
     }
   },
 
+  /**
+   * Permet l'authentification d'un utilisateur
+   * @param commit
+   * @param value
+   * @returns {Promise<void>}
+   */
   async signin({ commit }, value) {
     try {
       await firebase
