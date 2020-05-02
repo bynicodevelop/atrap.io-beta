@@ -18,7 +18,7 @@ export const actions = {
 
       await firebase.database().ref(`users/${user.user.uid}`).set({
         username: value.name,
-        profile_picture: value.avatar,
+        avatar: value.avatar,
       })
     } catch (e) {
       if (e.code === "auth/email-already-in-use") {
@@ -33,7 +33,6 @@ export const actions = {
         .auth()
         .signInWithEmailAndPassword(value.email, value.password)
     } catch (e) {
-      console.log(e)
       if (["auth/user-not-found", "auth/wrong-password"].includes(e.code)) {
         throw new SigninException()
       } else {
