@@ -11,6 +11,8 @@ describe("Navigation admin", function () {
   it("should user's avatar and name are visible", function () {
     cy.visit("http://localhost:3000/")
 
+    cy.get(".loading-page").should("be.visible")
+
     cy.get(".v-image__image").should(
       "have.css",
       "background-image",
