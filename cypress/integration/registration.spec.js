@@ -14,7 +14,7 @@ describe("Registration use case", function () {
 
     cy.get("#name").type("name")
 
-    cy.get("input[type=file]").attachFile("images/profile.jpg")
+    cy.get("input[type=file]").attachFile("images/profile.png")
 
     cy.get(".v-card__text > .v-btn").click()
 
@@ -40,7 +40,7 @@ describe("Registration use case", function () {
 
   it("Could not register with already email exist", function () {
     cy.get("#name").type("name")
-    cy.get("input[type=file]").attachFile("images/profile.jpg")
+    cy.get("input[type=file]").attachFile("images/profile.png")
 
     cy.get(".v-card__text > .v-btn").click()
     cy.scrollTo("bottom")
