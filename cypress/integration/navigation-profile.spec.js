@@ -20,7 +20,37 @@ describe("Navigation admin", function () {
     )
   })
 
-  it("should can open and close menu", function () {})
+  it("should can open navigation and see avatar with user name", function () {
+    cy.visit("http://localhost:3000/")
 
-  it("should can logout", function () {})
+    cy.get(".v-navigation-drawer__content").should("not.be.visible")
+
+    cy.get(".v-toolbar__content .v-btn").click()
+
+    cy.get(".v-navigation-drawer__content")
+
+    cy.get(".v-navigation-drawer__content .v-image__image").should(
+      "have.css",
+      "background-image",
+      `url("${Cypress.env("IMAGE_PROFILE")}")`
+    )
+
+    cy.get(".v-list-item__title").contains(Cypress.env("USERNAME"))
+
+    cy.get("body").type("{esc}")
+
+    cy.get(".v-navigation-drawer__content").should("not.be.visible")
+  })
+
+  it("should can logout", function () {
+    cy.visit("http://localhost:3000/")
+
+    cy.get(".v-toolbar__content .v-btn").click()
+
+    cy.get(".v-navigation-drawer__content .v-list .v-list-item").click()
+
+    cy.location().should((loc) => {
+      expect(loc.href).to.eq("http://localhost:3000/auth/signin")
+    })
+  })
 })
