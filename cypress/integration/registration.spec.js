@@ -29,6 +29,12 @@ describe("Registration use case", function () {
 
     cy.get("#password").clear().type("123456")
 
+    cy.get("#password").should("have.attr", "type", "password")
+
+    cy.get(".v-input__icon > .v-icon").click()
+
+    cy.get("#password").should("have.attr", "type", "text")
+
     cy.get("#next").click()
 
     cy.location({ timeout: 30000 }).should((loc) => {

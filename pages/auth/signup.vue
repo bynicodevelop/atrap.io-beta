@@ -74,6 +74,7 @@
             <v-text-field
               id="email"
               v-model="email"
+              type="email"
               :rules="emailRules"
               :label="$t('signup.step3.form.email.label')"
               required
@@ -82,9 +83,12 @@
             <v-text-field
               id="password"
               v-model="password"
+              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="show ? 'text' : 'password'"
               :rules="passwordRules"
               :label="$t('signup.step3.form.password.label')"
               required
+              @click:append="show = !show"
             />
           </v-form>
         </v-stepper-content>
@@ -119,6 +123,7 @@ export default {
     notify: Notify,
   },
   data: () => ({
+    show: false,
     snackbar: false,
     message: "",
 
