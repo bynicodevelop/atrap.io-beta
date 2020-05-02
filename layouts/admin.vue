@@ -21,12 +21,27 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
 export default {
   data: () => ({
     appName: process.env.APP_NAME,
-    user: {
-      avatar: "",
-    },
   }),
+  computed: {
+    user() {
+      return this.$store.state.user.data
+    },
+  },
+  mounted() {
+    this.$nextTick(async () => {
+      this.$nuxt.$loading.start()
+      await this.getUser()
+      this.$nuxt.$loading.finish()
+    })
+  },
+  methods: {
+    ...mapActions({
+      getUser: "user/loadUserData",
+    }),
+  },
 }
 </script>
