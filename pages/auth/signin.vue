@@ -18,9 +18,12 @@
       <v-text-field
         id="password"
         v-model="password"
+        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show ? 'text' : 'password'"
         :rules="passwordRules"
         :label="$t('signin.form.password.label')"
         required
+        @click:append="show = !show"
       />
 
       <v-btn :disabled="!valid" @click="doSignin">
@@ -47,6 +50,7 @@ export default {
     notify: Notify,
   },
   data: () => ({
+    show: false,
     valid: false,
 
     snackbar: false,
