@@ -31,6 +31,28 @@ export default {
       },
     },
   },
+  modal: {
+    delete: {
+      headline: "Confirmation de suppression",
+      content:
+        "Pour confirmer votre suppression, veuillez écrire dans le champs ci-dessous le mot : SUPPRIMER",
+      form: {
+        label: "Confirmation",
+        delete: {
+          validation: {
+            require:
+              "Vous devez confirmer la suppression par l'écriture du mot SUPPRIMER",
+            invalid: "Veuillez saisir le mot SUPPRIMER",
+          },
+        },
+      },
+      button: {
+        default: "Supprimer",
+        cancel: "Annuler",
+        valid: "Valider",
+      },
+    },
+  },
   cookies: {
     content:
       "Nous utilisons des cookies pour nous permettre de mieux comprendre comment le site est utilisé. En continuant à utiliser ce site, vous acceptez cette politique.",
