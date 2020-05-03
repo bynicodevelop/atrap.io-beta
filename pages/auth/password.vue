@@ -34,6 +34,7 @@
 <script>
 import { mapActions } from "vuex"
 import Notify from "../../components/Notify"
+import formRules from "../../common/formRules"
 export default {
   name: "Password",
   components: {
@@ -53,11 +54,7 @@ export default {
     },
   },
   mounted() {
-    this.passwordRules = [
-      (v) => !!v || this.$t("password.form.password.validation.require"),
-      (v) =>
-        v.length >= 6 || this.$t("password.form.password.validation.secured"),
-    ]
+    this.passwordRules = formRules.passwordRules
   },
   methods: {
     ...mapActions({

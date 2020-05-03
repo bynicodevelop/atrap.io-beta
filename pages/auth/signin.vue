@@ -44,6 +44,7 @@
 import { mapActions } from "vuex"
 import { SigninException } from "../../exceptions/SigninException"
 import Notify from "../../components/Notify"
+import formRules from "../../common/formRules"
 
 export default {
   name: "Signin",
@@ -58,13 +59,10 @@ export default {
     message: "",
 
     email: "",
-    emailRules: [
-      (v) => !!v || "Merci de saisir votre email principal",
-      (v) => /.+@.+\..+/.test(v) || "L'e-mail doit être valide",
-    ],
+    emailRules: [],
 
     password: "",
-    passwordRules: [(v) => !!v || "Merci de saisir un mot de passe"],
+    passwordRules: [],
     avatar: "",
   }),
   watch: {
@@ -75,14 +73,9 @@ export default {
   mounted() {
     this.valid = !this.valid
 
-    this.emailRules = [
-      (v) => !!v || this.$t("signin.form.email.validation.require"),
-      (v) =>
-        /.+@.+\..+/.test(v) || this.$t("signin.form.email.validation.valid"),
-    ]
-    this.passwordRules = [
-      (v) => !!v || this.$t("signin.form.password.validation.require"),
-    ]
+    this.emailRules = formRules.emailRules
+
+    this.passwordRules = formRules.passwordRules
   },
   methods: {
     ...mapActions({

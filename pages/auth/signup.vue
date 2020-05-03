@@ -116,6 +116,7 @@
 import { mapActions } from "vuex"
 import Notify from "../../components/Notify"
 import { EmailAlreadyUserException } from "../../exceptions/EmailAlreadyUserException"
+import formRules from "../../common/formRules"
 
 export default {
   name: "Signup",
@@ -188,23 +189,11 @@ export default {
       this.validSteps[`step${i}`] = !this.validSteps[`step${i}`]
     }
 
-    this.emailRules = [
-      (v) => !!v || this.$t("signup.step3.form.email.validation.require"),
-      (v) =>
-        /.+@.+\..+/.test(v) ||
-        this.$t("signup.step3.form.email.validation.valid"),
-    ]
+    this.nameRules = formRules.nameRules
 
-    this.nameRules = [
-      (v) => !!v || this.$t("signup.step1.form.name.validation.require"),
-    ]
+    this.emailRules = formRules.emailRules
 
-    this.passwordRules = [
-      (v) => !!v || this.$t("signup.step3.form.password.validation.require"),
-      (v) =>
-        v.length >= 6 ||
-        this.$t("signup.step3.form.password.validation.secured"),
-    ]
+    this.passwordRules = formRules.passwordRules
   },
   methods: {
     ...mapActions({

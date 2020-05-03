@@ -9,6 +9,28 @@ export default {
       },
     },
   },
+  common: {
+    form: {
+      name: {
+        validation: {
+          require: "Merci de saisir le nom de votre entité (marque).",
+        },
+      },
+      email: {
+        validation: {
+          require: "Merci de saisir votre email principal.",
+          valid: "L'e-mail doit être valide.",
+        },
+      },
+      password: {
+        validation: {
+          require: "Merci de saisir un mot de passe.",
+          secured:
+            "Merci de saisir un mot de passe plus sécurisé avec 6 caractères minimum.",
+        },
+      },
+    },
+  },
   cookies: {
     content:
       "Nous utilisons des cookies pour nous permettre de mieux comprendre comment le site est utilisé. En continuant à utiliser ce site, vous acceptez cette politique.",
@@ -27,9 +49,6 @@ export default {
       form: {
         name: {
           label: "Nom",
-          validation: {
-            require: "Merci de saisir le nom de votre entité (marque).q",
-          },
         },
       },
     },
@@ -44,18 +63,9 @@ export default {
       form: {
         email: {
           label: "Email",
-          validation: {
-            require: "Merci de saisir votre email principal.",
-            valid: "L'e-mail doit être valide.",
-          },
         },
         password: {
           label: "Mot de passe",
-          validation: {
-            require: "Merci de saisir un mot de passe.",
-            secured:
-              "Merci de saisir un mot de passe plus sécurisé avec 6 caractères minimum.",
-          },
         },
       },
     },
@@ -73,18 +83,9 @@ export default {
     form: {
       email: {
         label: "Email",
-        validation: {
-          require: "Merci de saisir votre email principal",
-          valid: "L'e-mail doit être valide",
-        },
       },
       password: {
         label: "Mot de passe",
-        validation: {
-          require: "Merci de saisir un mot de passe.",
-          secured:
-            "Merci de saisir un mot de passe plus sécurisé avec 6 caractères minimum.",
-        },
       },
     },
   },
@@ -101,17 +102,13 @@ export default {
     form: {
       email: {
         label: "Email",
-        validation: {
-          require: "Merci de saisir votre email principal",
-          valid: "L'e-mail doit être valide",
-        },
       },
     },
   },
   password: {
     h1: "Changement de mot de passe",
     explain: "Saisissez votre nouveau mot de passe pour le réinitialiser.",
-    button: "Enregister mon nouveau mot de passe",
+    button: "Enregister ce mot de passe",
     reset: "Réinitiliser mon mot de passe",
     snackbar: {
       message: {
@@ -122,13 +119,8 @@ export default {
       },
     },
     form: {
-      email: {
+      password: {
         label: "Password",
-        validation: {
-          require: "Merci de saisir un mot de passe.",
-          secured:
-            "Merci de saisir un mot de passe plus sécurisé avec 6 caractères minimum.",
-        },
       },
     },
   },
