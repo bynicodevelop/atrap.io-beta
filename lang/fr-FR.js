@@ -81,7 +81,53 @@ export default {
       password: {
         label: "Mot de passe",
         validation: {
-          require: "Merci de saisir un mot de passe",
+          require: "Merci de saisir un mot de passe.",
+          secured:
+            "Merci de saisir un mot de passe plus sécurisé avec 6 caractères minimum.",
+        },
+      },
+    },
+  },
+  reset: {
+    h1: "Mot de passe oublié",
+    explain:
+      "En saisissant les informations de ce formulaire, vous allez recevoir un email permettant de changer de mot de passe",
+    button: "Réinitialiser",
+    signin: "Aller à la page de connexion",
+    snackbar: {
+      message:
+        "Un email vient de vous être envoyé avec un lien clicable pour modifier votre mot de passe.",
+    },
+    form: {
+      email: {
+        label: "Email",
+        validation: {
+          require: "Merci de saisir votre email principal",
+          valid: "L'e-mail doit être valide",
+        },
+      },
+    },
+  },
+  password: {
+    h1: "Changement de mot de passe",
+    explain: "Saisissez votre nouveau mot de passe pour le réinitialiser.",
+    button: "Enregister mon nouveau mot de passe",
+    reset: "Réinitiliser mon mot de passe",
+    snackbar: {
+      message: {
+        error:
+          'Il est impossible de changer de mot de passe. Vous devez recommander l\'opération de réinitialisation en cliquant sur le lien "Réinitiliser mon mot de passe"',
+        success:
+          'Votre mot de passe a été réinititialisé. Vous pouvez-vous connecter en cliquant sur le lien "Réinitiliser mon mot de passe"',
+      },
+    },
+    form: {
+      email: {
+        label: "Password",
+        validation: {
+          require: "Merci de saisir un mot de passe.",
+          secured:
+            "Merci de saisir un mot de passe plus sécurisé avec 6 caractères minimum.",
         },
       },
     },

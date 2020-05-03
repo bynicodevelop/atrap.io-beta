@@ -43,6 +43,30 @@ describe("Navigation", function () {
     )
   })
 
+  it("should navigate to go signin page from reset page", function () {
+    gotTo(
+      "http://localhost:3000/auth/reset",
+      ".flex > a",
+      "http://localhost:3000/auth/signin"
+    )
+  })
+
+  it("should navigate to go reset page from password page", function () {
+    gotTo(
+      "http://localhost:3000/auth/password",
+      ".flex > a",
+      "http://localhost:3000/auth/reset"
+    )
+  })
+
+  it("should not can access to password page id have not code", function () {
+    gotTo(
+      "http://localhost:3000/auth/password",
+      null,
+      "http://localhost:3000/auth/signin"
+    )
+  })
+
   it("should not be redirect user to dashboard when to try to go to guest url", function () {
     cy.login(Cypress.env("UID_JOHN_DOE_TEST"))
 
