@@ -10,6 +10,7 @@
       <v-text-field
         id="email"
         v-model="email"
+        type="email"
         :rules="emailRules"
         :label="$t('signin.form.email.label')"
         required

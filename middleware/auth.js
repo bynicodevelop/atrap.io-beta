@@ -14,6 +14,13 @@ export default ({ store, redirect, route }) => {
   }
 
   if (
+    (route.query.oobCode === undefined || route.query.oobCode === "") &&
+    route.name.includes("auth-password")
+  ) {
+    redirect("/auth/signin")
+  }
+
+  if (
     store.state.auth.isAuthenticated &&
     guestRoutes.map((d) => (route.name || []).includes(d)).includes(true)
   ) {

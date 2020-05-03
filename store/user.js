@@ -2,6 +2,7 @@ import firebase from "firebase"
 import { EmailAlreadyUserException } from "../exceptions/EmailAlreadyUserException"
 import { SigninException } from "../exceptions/SigninException"
 import { UnexpectedError } from "../exceptions/UnexpectedError"
+import { ResetPasswordException } from "../exceptions/ResetPasswordException"
 
 export const state = () => ({
   uid: null,
@@ -91,6 +92,43 @@ export const actions = {
       await firebase.auth().signOut()
     } catch (e) {
       console.log(e)
+    }
+  },
+
+  /**
+   * Permet d'envoyer un email de changement de mot de passe à l'utilisateur
+   * @param commit
+   * @param value
+   * @returns {Promise<void>}
+   */
+  async reset({ commit }, value) {
+    try {
+      await firebase.auth().sendPasswordResetEmail(value, {
+        url: `${process.env.BASE_URL}/auth/signin`,
+      })
+    } catch (e) {
+      // No error possible
+    }
+  },
+
+  /**
+   * Permet la modification du mot de passe par
+   * @param commit
+   * @param value
+   * @returns {Promise<void>}
+   */
+  async resetPassword({ commit }, value) {
+    try {
+      await firebase.auth().confirmPasswordReset(value.code, value.password)
+    } catch (e) {
+      const errorsCodes = [
+        "auth/invalid-action-code",
+        "auth/expired-action-code",
+      ]
+
+      if (errorsCodes.includes(e.code)) {
+        throw new ResetPasswordException()
+      }
     }
   },
 }
