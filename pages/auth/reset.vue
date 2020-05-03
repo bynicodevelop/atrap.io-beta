@@ -32,6 +32,7 @@
 <script>
 import { mapActions } from "vuex"
 import Notify from "../../components/Notify"
+import formRules from "../../common/formRules"
 
 export default {
   name: "Reset",
@@ -53,11 +54,7 @@ export default {
   mounted() {
     this.valid = !this.valid
 
-    this.emailRules = [
-      (v) => !!v || this.$t("reset.form.email.validation.require"),
-      (v) =>
-        /.+@.+\..+/.test(v) || this.$t("reset.form.email.validation.valid"),
-    ]
+    this.emailRules = formRules.emailRules
   },
   methods: {
     ...mapActions({
