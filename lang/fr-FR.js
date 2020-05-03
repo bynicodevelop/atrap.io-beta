@@ -8,6 +8,12 @@ export default {
         },
       },
     },
+    admin: {
+      nav: {
+        profile: "Profil",
+        signout: "Déconnexion",
+      },
+    },
   },
   common: {
     form: {
@@ -123,5 +129,10 @@ export default {
         label: "Password",
       },
     },
+  },
+  profile: {
+    h1: "Gestion du profil",
+    explain:
+      "Ici, vous pouvez modifier votre profil général. C'est-à-dire votre email, ou votre mot de passe.",
   },
 }

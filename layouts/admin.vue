@@ -40,13 +40,27 @@
       <v-divider></v-divider>
 
       <v-list dense>
-        <v-list-item link @click="logout">
+        <v-list-item id="profile" link to="/profile">
+          <v-list-item-icon>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ $t("layout.admin.nav.profile") }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item id="logout" link @click="logout">
           <v-list-item-icon>
             <v-icon>mdi-logout</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Déconnexion</v-list-item-title>
+            <v-list-item-title>
+              {{ $t("layout.admin.nav.signout") }}
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
