@@ -13,6 +13,8 @@
         <v-card-text>
           <v-container>
             <v-row>
+              <div v-if="content" v-html="content"></div>
+
               <p>{{ $t("modal.delete.content") }}</p>
 
               <v-col cols="12">
@@ -47,7 +49,11 @@ export default {
   props: {
     button: {
       type: String,
-      default: "",
+      default: null,
+    },
+    content: {
+      type: String,
+      default: null,
     },
   },
   data: () => ({
