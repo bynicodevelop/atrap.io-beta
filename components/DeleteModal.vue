@@ -47,7 +47,7 @@ export default {
   props: {
     button: {
       type: String,
-      default: $nuxt.$t("modal.delete.button.default"),
+      default: "",
     },
   },
   data: () => ({
@@ -71,6 +71,7 @@ export default {
   },
   methods: {
     doValid() {
+      this.$emit("confirm")
       this.dialog = false
     },
   },
