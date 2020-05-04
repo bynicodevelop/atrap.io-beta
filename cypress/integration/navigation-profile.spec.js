@@ -42,12 +42,24 @@ describe("Navigation admin", function () {
     cy.get(".v-navigation-drawer__content").should("not.be.visible")
   })
 
+  it("should can got to profile page", function () {
+    cy.visit("http://localhost:3000/")
+
+    cy.get(".v-toolbar__content .v-btn").click()
+
+    cy.get("#profile").click()
+
+    cy.location().should((loc) => {
+      expect(loc.href).to.eq("http://localhost:3000/profile")
+    })
+  })
+
   it("should can logout", function () {
     cy.visit("http://localhost:3000/")
 
     cy.get(".v-toolbar__content .v-btn").click()
 
-    cy.get(".v-navigation-drawer__content .v-list .v-list-item").click()
+    cy.get("#logout").click()
 
     cy.location().should((loc) => {
       expect(loc.href).to.eq("http://localhost:3000/auth/signin")
