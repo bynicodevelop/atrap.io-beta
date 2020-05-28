@@ -11,7 +11,7 @@
         <template v-slot:activator="{ on }">
           <v-btn v-on="on" @click.stop="drawer = !drawer">
             <v-avatar id="avatar" color="grey" size="30">
-              <v-img :src="user.avatar"></v-img>
+              <v-img :src="user.avatar" />
             </v-avatar>
           </v-btn>
         </template>
@@ -29,7 +29,7 @@
     <v-navigation-drawer v-model="drawer" fixed temporary right>
       <v-list-item>
         <v-list-item-avatar>
-          <v-img :src="user.avatar"></v-img>
+          <v-img :src="user.avatar" />
         </v-list-item-avatar>
 
         <v-list-item-content>
@@ -37,7 +37,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider />
 
       <v-list dense>
         <v-list-item id="profile" link to="/profile">

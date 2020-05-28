@@ -1,3 +1,5 @@
+/* global Cypress, cy */
+
 const gotTo = (visit, selector, expected) => {
   cy.visit(visit)
 

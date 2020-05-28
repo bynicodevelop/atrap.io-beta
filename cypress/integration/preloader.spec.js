@@ -1,3 +1,5 @@
+/* global Cypress, cy */
+
 describe("Preloader", function () {
   it("should be display when the page loading", function () {
     cy.login(Cypress.env("UID_JOHN_DOE_TEST"))

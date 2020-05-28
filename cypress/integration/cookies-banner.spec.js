@@ -1,3 +1,5 @@
+/* global cy */
+
 describe("Cookies banner", function () {
   it("Should display cookies banner", function () {
     cy.visit("http://localhost:3000/auth/signup")

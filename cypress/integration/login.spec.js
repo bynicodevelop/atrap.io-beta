@@ -1,3 +1,5 @@
+/* global Cypress, cy */
+
 describe("Login", function () {
   beforeEach(function () {
     cy.visit("http://localhost:3000/auth/signin")

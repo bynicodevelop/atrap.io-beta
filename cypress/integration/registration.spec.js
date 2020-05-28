@@ -1,3 +1,5 @@
+/* global Cypress, cy */
+
 describe("Registration use case", function () {
   beforeEach(function () {
     cy.logout(Cypress.env("UID_JOHN_DOE_TEST"))
@@ -57,6 +59,6 @@ describe("Registration use case", function () {
 
     cy.get(".v-card__text > .v-btn").click()
 
-    cy.get(".v-snack__content").should("be.visible")
+    global.cy
   })
 })
