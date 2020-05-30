@@ -22,6 +22,8 @@
       <v-container grid-list-md>
         <v-layout row>
           <nuxt />
+
+          <tool />
         </v-layout>
       </v-container>
     </v-content>
@@ -70,7 +72,12 @@
 
 <script>
 import { mapActions } from "vuex"
+import ToolBtn from "../components/ToolBtn"
+
 export default {
+  components: {
+    tool: ToolBtn,
+  },
   data: () => ({
     appName: process.env.APP_NAME,
     drawer: false,
