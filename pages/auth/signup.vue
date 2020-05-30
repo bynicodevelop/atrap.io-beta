@@ -91,6 +91,10 @@
               @click:append="show = !show"
             />
           </v-form>
+
+          <v-overlay :value="overlay">
+            <v-progress-circular indeterminate size="64" />
+          </v-overlay>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -124,6 +128,7 @@ export default {
     notify: Notify,
   },
   data: () => ({
+    overlay: false,
     show: false,
     snackbar: false,
     message: "",
@@ -163,6 +168,7 @@ export default {
     },
     async step() {
       if (this.step > 3) {
+        this.overlay = true
         this.step = 3
         try {
           await this.signup({
