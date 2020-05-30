@@ -5,6 +5,7 @@ import { UnexpectedError } from "../exceptions/UnexpectedError"
 import { ResetPasswordException } from "../exceptions/ResetPasswordException"
 import { ProfileUpdateException } from "../exceptions/ProfileUpdateException"
 import { UnLockException } from "../exceptions/UnLockException"
+import { DeleteException } from "../exceptions/DeleteException"
 
 export const state = () => ({
   uid: null,
@@ -180,6 +181,19 @@ export const actions = {
     } catch (e) {
       console.log(e)
       throw new ProfileUpdateException()
+    }
+  },
+
+  async deleteProfile() {
+    const user = firebase.auth().currentUser
+
+    try {
+      await firebase.firestore().collection("users").doc(user.uid).delete()
+
+      await user.delete()
+    } catch (e) {
+      console.log(e)
+      throw new DeleteException()
     }
   },
 }
