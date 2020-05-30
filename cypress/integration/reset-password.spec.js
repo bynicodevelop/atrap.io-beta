@@ -1,3 +1,5 @@
+/* global cy */
+
 const sendNewPassword = (email) => {
   cy.get("input[type=email]").type(email)
 

@@ -1,3 +1,5 @@
+/* global Cypress, cy */
+
 describe("Navigation admin", function () {
   beforeEach(function () {
     cy.login(Cypress.env("UID_JOHN_DOE_TEST"))

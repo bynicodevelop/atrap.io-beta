@@ -3,6 +3,8 @@ import { EmailAlreadyUserException } from "../exceptions/EmailAlreadyUserExcepti
 import { SigninException } from "../exceptions/SigninException"
 import { UnexpectedError } from "../exceptions/UnexpectedError"
 import { ResetPasswordException } from "../exceptions/ResetPasswordException"
+import { ProfileUpdateException } from "../exceptions/ProfileUpdateException"
+import { UnLockException } from "../exceptions/UnLockException"
 
 export const state = () => ({
   uid: null,
@@ -13,6 +15,9 @@ export const mutations = {
   data(state, value) {
     state.uid = value.uid
     state.data = value.data
+  },
+  updateEmail(state, value) {
+    state.data.email = value
   },
 }
 
@@ -76,7 +81,7 @@ export const actions = {
 
       commit("data", {
         uid: user.uid,
-        data: data.val(),
+        data: { ...{ email: user.email }, ...data.val() },
       })
     } catch (e) {
       console.log(e)
@@ -129,6 +134,52 @@ export const actions = {
       if (errorsCodes.includes(e.code)) {
         throw new ResetPasswordException()
       }
+    }
+  },
+
+  /**
+   * Permet de débloquer l'accès à la mise à jour du profil
+   * @param commit
+   * @param value
+   * @returns {Promise<void>}
+   */
+  async unlock({ commit }, value) {
+    try {
+      const user = firebase.auth().currentUser
+      const credential = firebase.auth.EmailAuthProvider.credential(
+        user.email,
+        value
+      )
+
+      await user.reauthenticateWithCredential(credential)
+    } catch (e) {
+      console.log(e)
+      throw new UnLockException()
+    }
+  },
+
+  /**
+   * Permet de mettre à jour les informations du profil
+   * @param commit
+   * @param value
+   * @returns {Promise<void>}
+   */
+  async updateProfile({ commit }, value) {
+    try {
+      const user = await firebase.auth().currentUser
+
+      if (value.email !== "" && value.email !== user.email) {
+        await user.updateEmail(value.email)
+
+        commit("updateEmail", value.email)
+      }
+
+      if (value.password !== undefined && value.password !== "") {
+        await user.updatePassword(value.password)
+      }
+    } catch (e) {
+      console.log(e)
+      throw new ProfileUpdateException()
     }
   },
 }

@@ -13,7 +13,7 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <div v-if="content" v-html="content"></div>
+              <div v-if="content" v-html="content" />
 
               <p>{{ $t("modal.delete.content") }}</p>
 
@@ -23,13 +23,13 @@
                   :rules="confirmRules"
                   :label="$t('modal.delete.form.label')"
                   required
-                ></v-text-field>
+                />
               </v-col>
             </v-row>
           </v-container>
         </v-card-text>
         <v-card-actions>
-          <v-spacer></v-spacer>
+          <v-spacer />
           <v-btn color="success darken-1" text @click="dialog = false">
             {{ $t("modal.delete.button.cancel") }}
           </v-btn>

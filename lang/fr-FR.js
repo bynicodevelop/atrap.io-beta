@@ -153,8 +153,46 @@ export default {
     },
   },
   profile: {
-    h1: "Gestion du profil",
-    explain:
-      "Ici, vous pouvez modifier votre profil général. C'est-à-dire votre email, ou votre mot de passe.",
+    snackbar: {
+      error: {
+        unexpectedError: "Une erreur est survenue",
+        wrongPassword: "Mot de passe incorrect",
+      },
+      success: "",
+    },
+    step1: {
+      h1: "Gestion du profil",
+      explain:
+        "Ici, vous pouvez modifier votre profil général. C'est-à-dire votre email, ou votre mot de passe.",
+    },
+    step2: {
+      h1: "Déverrouillage",
+      explain:
+        "Saisissez votre mot de passe pour modifier vos informations personnelles.",
+      form: {
+        password: {
+          label: "Mot de passe",
+        },
+        btn: {
+          label: "Déverouiller",
+        },
+      },
+    },
+    step3: {
+      h1: "Modification",
+      explain:
+        "Vous pouvez changer vos informations personnelles en toute sécurité.",
+      form: {
+        email: {
+          label: "Email",
+        },
+        password: {
+          label: "Mot de passe",
+        },
+        btn: {
+          label: "Mettre à jour",
+        },
+      },
+    },
   },
 }
