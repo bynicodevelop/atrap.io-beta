@@ -182,6 +182,11 @@ export default {
       h1: "Modification",
       explain:
         "Vous pouvez changer vos informations personnelles en toute sécurité.",
+      modal: {
+        content:
+          "En supprimant votre compte, vous prenez conscience que toutes les données vous concernant ainsi que tous les liens que vous avez créés seront perdu.",
+        button: "Supprimer",
+      },
       form: {
         email: {
           label: "Email",
@@ -190,7 +195,9 @@ export default {
           label: "Mot de passe",
         },
         btn: {
-          label: "Mettre à jour",
+          modify: {
+            label: "Mettre à jour",
+          },
         },
       },
     },

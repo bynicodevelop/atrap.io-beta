@@ -106,8 +106,14 @@
             />
 
             <v-btn :disabled="!validEmail" @click="doUpdate">
-              {{ $t("profile.step3.form.btn.label") }}
+              {{ $t("profile.step3.form.btn.modify.label") }}
             </v-btn>
+
+            <delete-modal
+              :content="$t('profile.step3.modal.content')"
+              :button="$t('profile.step3.modal.button')"
+              @confirm="doDelete"
+            />
           </v-form>
         </v-stepper-content>
       </v-stepper-items>
@@ -122,12 +128,14 @@ import formRules from "../../common/formRules"
 import { mapActions } from "vuex"
 import Notify from "../../components/Notify"
 import { ProfileUpdateException } from "../../exceptions/ProfileUpdateException"
+import DeleteModal from "../../components/DeleteModal"
 
 export default {
   layout: "admin",
   name: "Profile",
   components: {
     notify: Notify,
+    "delete-modal": DeleteModal,
   },
   data: () => ({
     snackbar: false,
@@ -162,6 +170,7 @@ export default {
     ...mapActions({
       unlock: "user/unlock",
       updateProfile: "user/updateProfile",
+      deleteProfile: "user/deleteProfile",
     }),
     async doUnLock() {
       this.snackbar = false
@@ -193,6 +202,15 @@ export default {
           this.message = this.$t("profile.snackbar.error.unexpectedError")
           this.snackbar = true
         }
+      }
+    },
+    async doDelete() {
+      try {
+        await this.deleteProfile()
+
+        window.location.href = "/auth/signin"
+      } catch (e) {
+        console.log(e)
       }
     },
   },
